@@ -3,7 +3,6 @@
 ## 开发typeNav全局组件
 
 >注意：以后在开发项目的时候，如果发现某一个组件在项目当中多个地方出现频繁的使用,就把这类的组件注册为**全局组件**，一般是在**入口文件注册**
-
 > *全局组件发送请求*，本来写在组件中，为优化性能 --> 实现只发一次 --> 把请求移到App.vue组件中
 
 ### 一级分类的背景效果
@@ -13,13 +12,15 @@
 
 >利用data中的currentIndex，v-for中的Index
 
-  1. 添加鼠标进入mouseenter的方法，并传参(index)  
+   1 添加鼠标进入mouseenter的方法，并传参(index)  
 
     -- `this.currentIndex=index`
-  2. 动态添加类名  
+
+   2 动态添加类名  
 
     -- `:class="{cur: currentIndex === index}"`
-  3. 添加鼠标离开mouseleave的方法  
+
+   3 添加鼠标离开mouseleave的方法  
 
     -- `this.currentIndex = -1`
 
@@ -59,4 +60,3 @@ home切换到search或者search切换到home，组件在频繁的向服务器发
 把发送请求移到`App.vue`中
 
 >注意：虽然main.js也是只执行一次，但是不可以放在main.js中，因为**只有组件的身上才会有$store属性**
-
