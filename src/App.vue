@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <my-header></my-header>
+    <router-view></router-view>
+    <my-footer v-show="$route.meta.show"></my-footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import myHeader from './components/myHeader'
+import myFooter from './components/myFooter'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    myHeader,
+    myFooter
+  },
+  mounted() {
+    // 派发action，
+    // 放在App.vue中实现只发一次请求，提高性能
+    this.$store.dispatch("getCategoryList");
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
